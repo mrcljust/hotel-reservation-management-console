@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FPKHotelreservierung</name>
+    </assembly>
+    <members>
+        <member name="T:FPKHotelreservierung.GuestUtil.Address">
+            <summary>
+            Die Klasse repräsentiert eine Adresse eines Gasts.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.GuestUtil.CreditCard">
+            <summary>
+            Die Klasse repräsentiert eine Kreditkarte eines Gasts.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.GuestUtil.CreditCard.ToString">
+            <summary>
+            Gibt einen String zurück, der das aktuelle CreditCard Objekt repräsentiert.
+            Ohne CultureInfo würde bei deutschen Anwendern das / durch . ersetzt werden.
+            Das / ist in diesem Falle für die Gültigkeitsdauer der Kreditkarte jedoch gewünscht.
+            </summary>
+            <returns>Ein benutzerfreundliches String des aktuellen Objekts.</returns>
+        </member>
+        <member name="T:FPKHotelreservierung.GuestUtil.CreditCardType">
+            <summary>
+            Alle Kreditkartenarten, die vom Hotel akzeptiert werden.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.GuestUtil.Guest">
+            <summary>
+            Die Klasse repräsentiert einen Hotelgast.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.Hotel">
+            <summary>
+            Die Klasse verwaltet die Listen und die Methoden, die bei Wahl von Aktionen in der Konsole aufgerufen werden.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ShowMainMenu">
+            <summary>
+            Hauptmenü anzeigen und Benutzerwahl auslesen.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ShowGuestMenu">
+            <summary>
+            Gastmenü anzeigen und Benutzerwahl auslesen.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ShowRoomMenu">
+            <summary>
+            Zimmermenü zeigen und Benutzerauswahl auslesen.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ShowReservationMenu">
+            <summary>
+            Reservierungsmenü zeigen und Benutzerauswahl auslesen.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.SafeAndExit">
+            <summary>
+            Daten per XML Serialisierung speichern.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ListGuests(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Methode zum Listen aller vorhandenen Gäste.
+            </summary>
+            <param name="showHeader">Gibt an, ob der Header und Seperator angezeigt werden soll.</param>
+            <param name="returnToGuestMenu">Gibt an, ob nach Ausführung wieder das Gastmenü aufgerufen werden soll.</param>
+            <param name="showAddNewGuest">Gibt an, ob ein Eintrag 'Neuen Gast anlegen' vorhanden sein soll.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddGuest(System.Boolean)">
+            <summary>
+            Methode zum Anlegen eines Gasts.
+            </summary>
+            <param name="showGuestMenuAfter">Gibt an, ob nach Ausführung wieder das Gastmenü aufgerufen werden soll.</param>
+            <returns>Den neuangelegten Gast.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.EditGuest">
+            <summary>
+            Methode zum Bearbeiten eines Gasts.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddOrEditGuest(FPKHotelreservierung.GuestUtil.Guest)">
+            <summary>
+            Methode zum Bearbeiten und Anlegen eines Gasts.
+            Beim Bearbeiten werden die vorherigen Werte als Standardtext für den User dargestellt.
+            </summary>
+            <param name="guestToEdit">Wenn ein Gast bearbeitet wird stellt das Objekt den Gast vor der Bearbeitung dar.</param>
+            <returns>Den erstellten oder geänderten Gast.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.RemoveGuest">
+            <summary>
+            Methode zum Löschen eines Gasts.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ChooseGuestForReservation">
+            <summary>
+            Auswahl des Gasts dem eine Reservierung zugeordnet wird.
+            </summary>
+            <returns>Den selektierten Gast.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ListRoomsAndTypes">
+            <summary>
+            Methode zum Listen aller vorhandenen Zimmerkategorien und Zimmer.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ListRooms">
+            <summary>
+            Methode zum Listen aller vorhandenen Zimmer.
+            Methode wird nur aufgerufen bei 'Zimmer bearbeiten' und 'Zimmer löschen' zur Auswahl des zu bearbeitenden/zu löschenden Zimmers.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ChooseRoomForReservation(System.Collections.Generic.List{FPKHotelreservierung.RoomUtil.Room})">
+            <summary>
+            Zimmerauswahl durch den Nutzer im Rahmen einer Reservierung.
+            </summary>
+            <param name="roomList">Liste der zur Verfügung stehenden Zimmer.</param>
+            <returns>Den selektierten Zimmer.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ListRoomTypes(System.Boolean)">
+            <summary>
+            Methode zum Listen aller vorhandenen Zimmerkategorien.
+            Methode wird nur aufgerufen bei 'Zimmerkategorie bearbeiten' und 'Zimmerkategorie löschen' zur Auswahl der zu bearbeitenden/zu löschenden Zimmerkategorie.
+            </summary>
+            <param name="showReturnItemInList">Wenn true wird ein Zurück-Item in der Liste angezeigt.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddRoomType(System.Boolean)">
+            <summary>
+            Methode zum Anlegen einer Zimmerkategorie.
+            </summary>
+            <param name="returnToRoomMenu">Gibt an, ob nach Ausführung wieder das Zimmermenü aufgerufen werden soll.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.EditRoomType">
+            <summary>
+            Methode zum Bearbeiten einer Zimmerkategorie.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddOrEditRoomType(FPKHotelreservierung.RoomUtil.RoomType)">
+            <summary>
+            Methode zum Bearbeiten und Anlegen einer Zimmerkategorie.
+            Name der Zimmerkategorie wird einmalig vergeben.
+            Beim Bearbeiten werden die vorherigen Werte als Standardtext für den User dargestellt.
+            </summary>
+            <param name="previousRoomType">Wenn eine Zimmerkategorie bearbeitet wird stellt das Objekt die Zimmerkategorie vor der Bearbeitung dar.</param>
+            <returns>Die erstellte oder geänderte Zimmerkategorie.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.RemoveRoomType">
+            <summary>
+            Methode zum Löschen einer Zimmerkategorie.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddRoom(System.Boolean,System.Boolean)">
+            <summary>
+            Methode zum Anlegen eines Zimmers.
+            </summary>
+            <param name="returnToRoomMenu">Gibt an, ob nach Anlegen des Zimmers zur Zimmerverwaltung zurückgekehrt werden soll.</param>
+            <param name="returnToReservationMenuOnCancel">Gibt an, ob bei Abbruch (wenn noch keine Zimmerkategorie besteht und der
+            Benutzer keine Zimmerkategorie anlegen will) zum Reservierungsmenü zurückgekehrt werden soll.
+            Ist true, wenn die Methode im Zuge der Erstellung einer Reservierung aufgerufen wird, sonst false.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.EditRoom">
+            <summary>
+            Methode zum Bearbeiten eines Zimmers.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddOrEditRoom(FPKHotelreservierung.RoomUtil.Room)">
+            <summary>
+            Methode zum Bearbeiten und Anlegen eines Zimmers.
+            Nummer des Zimmers wird einmalig vergeben.
+            Beim Bearbeiten werden die vorherigen Werte als Standardtext für den User dargestellt.
+            </summary>
+            <param name="previousRoom">Wenn ein Zimmer bearbeitet wird stellt das Objekt das Zimmer vor der Bearbeitung dar.</param>
+            <returns>Das erstellte oder geänderte Zimmer.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.RemoveRoom">
+            <summary>
+            Methode zum Löschen eines Zimmers.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ChooseRoomType(System.String)">
+            <summary>
+            Zimmerkategorie durch User wählen lassen.
+            </summary>
+            <param name="roomNumber">Die zugehörige Zimmernummer.</param>
+            <returns>Die gewählte Zimmerkategorie.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.ListReservations(System.Boolean,System.Boolean)">
+            <summary>
+            Methode zum Listen aller vorhandenen Reservierungen.
+            </summary>
+            <param name="showHeader">Soll der Header und Seperator angezeigt werden.</param>
+            <param name="returnToReservationMenu">Wenn true wird am Ende der Methode zum Reservierungsmenü zurückgekehrt.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddReservation">
+            <summary>
+            Methode zum Anlegen einer neuen Reservierung.
+            Es wird geprüft, ob mindestens ein Zimmer und eine Zimmerkategorie existieren.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.EditReservation">
+            <summary>
+            Methode zum Bearbeiten einer bestehenden Reservierung.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.AddOrEditReservation(FPKHotelreservierung.ReservationUtil.Reservation)">
+            <summary>
+            Methode zum Bearbeiten und Anlegen einer Reservierung.
+            Beim Bearbeiten werden die vorherigen Werte als Standardtext für den User dargestellt.
+            </summary>
+            <param name="previousReservation">Wenn eine Reservierung bearbeitet wird stellt das Objekt die Reservierung vor der Bearbeitung dar.</param>
+            <returns>Die erstellte oder geänderte Reservierung.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.Hotel.RemoveReservation">
+            <summary>
+            Methode zum Löschen einer bestehenden Reservierung.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.NumericMenu">
+            <summary>
+            Klasse mit Methoden zum Anzeigen von Konsolen-Auswahlmenüs.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.#ctor(FPKHotelreservierung.NumericMenuEntry,FPKHotelreservierung.NumericMenuEntry[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:FPKHotelreservierung.NumericMenu"/> class.
+            Initialisiert ein neues NumericMenu.
+            </summary>
+            <param name="menuTitle">Titel des Menüs.</param>
+            <param name="menuEntries">Einträge des Menüs.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.ShowMenuHeader(FPKHotelreservierung.NumericMenuEntry,System.Boolean)">
+            <summary>
+            MenuHeader zu einem NumericMenuEntry, ggf. mit einem Seperator, anzeigen.
+            </summary>
+            <param name="menuTitle">Titel des Menüs.</param>
+            <param name="showSeperator">Gibt an, ob ein Seperator angezeigt werden soll.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.ShowPromptInfo">
+            <summary>
+            Eingabeaufforderung ausgeben.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.GetHeader(FPKHotelreservierung.NumericMenuEntry)">
+            <summary>
+            Header/Bezeichnung eines NumericMenuEntry zurückgeben.
+            </summary>
+            <param name="menuEntry">Ein NumericMenuEntry, zu dem die Bezeichnung ausgegeben werden soll.</param>
+            <returns>Die Bezeichnung als string.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.GetDescription(FPKHotelreservierung.NumericMenuEntry)">
+            <summary>
+            Beschreibung eines NumericMenuEntry zurückgeben.
+            Für manche Menüs wird eine eigene Beschreibung zurückgegeben, für die anderen Fälle entspricht die Beschreibung dem Header.
+            </summary>
+            <param name="menuEntry">Ein NumericMenuEntry, zu dem die Beschreibung ausgegeben werden soll.</param>
+            <returns>Die Beschreibung als string.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.NumericMenu.ShowMenu">
+            <summary>
+            Ein nummeriertes Konsolenmenü mit wählbaren IDs anzeigen und die Auswahl abwarten.
+            Für manche Menüs wird eine eigene Beschreibung zurückgegeben, für die anderen Fälle entspricht die Beschreibung dem Header.
+            </summary>
+            <returns>Die im Menü getroffene Auswahl als NumericMenuEntry.</returns>
+        </member>
+        <member name="T:FPKHotelreservierung.NumericMenuEntry">
+            <summary>
+            Alle Menü-Einträge die in ein NumericMenu platziert werden können.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.ReservationUtil.CateringType">
+            <summary>
+            Alle Verpflegungsarten, die es im Hotel gibt.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.ReservationUtil.CateringTypeExtension">
+            <summary>
+            Klasse mit Methoden zur Umwandlung in und von das/dem enum CateringType.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.ReservationUtil.Reservation">
+            <summary>
+            Die Klasse repräsentiert eine Hotelreservierung.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.ReservationUtil.Reservation.CalculatePrice(FPKHotelreservierung.RoomUtil.RoomType,System.UInt32,FPKHotelreservierung.ReservationUtil.CateringType)">
+            <summary>
+            Methode zum Berechnen des Gesamtpreises bei einer gegebenen Aufenthaltsdauer anhand des Room- und CateringTypes.
+            </summary>
+            <param name="roomType">Der RoomType des Aufenthalts.</param>
+            <param name="stayInDays">Die Aufenthaltsdauer in Tagen.</param>
+            <param name="cateringType">Der CateringType.</param>
+            <returns>Gesamtpreis des Aufenthalts.</returns>
+        </member>
+        <member name="T:FPKHotelreservierung.RoomUtil.Room">
+            <summary>
+            Die Klasse repräsentiert ein Zimmer.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.RoomUtil.RoomOrientation">
+            <summary>
+            Alle Raumausrichtungen, die es im Hotel gibt.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.RoomUtil.RoomOrientationExtension">
+            <summary>
+            Klasse mit Methoden zur Umwandlung in und von das/dem enum RoomOrientation.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.RoomUtil.RoomType">
+            <summary>
+            Die Klasse repräsentiert eine Zimmerkategorie.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.Start">
+            <summary>
+            Beim Programmstart aufgerufene Klasse mit Main-Void.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Start.Main">
+            <summary>
+            Konsolengrundeinstellungen und EventHandler setzen, Listen mit Daten aus .xml-Dateien füllen, Konsolenhauptmenü aufrufen.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.Start.CurrentDomain_ProcessExit(System.Object,System.EventArgs)">
+            <summary>
+            EventHandler der beim Beenden des Prozesses aufgerufen wird. Speichern der Daten per XML-Serialisierung in .xml-Dateien.
+            </summary>
+        </member>
+        <member name="T:FPKHotelreservierung.UserChoice`1">
+            <summary>
+            Klasse mit Methoden zum Auslesen der Benutzerauswahl.
+            </summary>
+            <typeparam name="T">Der Typ, zu dem eine Auswahl getroffen werden soll.</typeparam>
+        </member>
+        <member name="M:FPKHotelreservierung.UserChoice`1.ChooseFromEnum(System.Type,System.String,System.Nullable{System.UInt32})">
+            <summary>
+            Member aus Enum auswählen lassen.
+            </summary>
+            <param name="enumType">Typ des Enums.</param>
+            <param name="prompt">Eingabe-/Auswahlaufforderung.</param>
+            <param name="reservationPeriodInDays">Bei Auswahl von CateringType, Reservierungsdauer in Tagen.</param>
+            <returns>Den ausgewählten Member des Enums.</returns>
+        </member>
+        <member name="T:FPKHotelreservierung.UserInput">
+            <summary>
+            Klasse mit Methoden zum Auslesen von Benutzereingaben aus der Konsole.
+            </summary>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetString(System.String,System.String,System.Boolean)">
+            <summary>
+            Fordert den Nutzer auf, einen String einzugeben, und gibt diesen zurück. Ggf. wird der vorher eingegebene Wert
+            als Standardwert gesetzt, insofern vom User ein String bearbeitet wird.
+            </summary>
+            <param name="prompt">Ein Eingabeaufforderungstext.</param>
+            <param name="previousValue">Ein zuvor für diese Eingabeaufforderung eingegebener Wert.</param>
+            <param name="allowEmptyReturnString">Gibt an, ob der rückzugebende String leer sein darf oder nicht.</param>
+            <returns>Der vom Nutzer eingegeben String.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetYesNo(System.String)">
+            <summary>
+            Stellt dem Nutzer eine Ja/Nein Frage und gibt die Antwort als bool zurück.
+            </summary>
+            <param name="question">Eine Frage.</param>
+            <returns>Die Antwort des Nutzers als bool.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetUint(System.String,System.Nullable{System.UInt32})">
+            <summary>
+            Fordert den Nutzer auf, eine ganze Zahl im uint-Bereich einzugeben, und gibt diese zurück.
+            Ggf. wird der vorher eingegebene Wert als Standardwert gesetzt, insofern vom User ein Wert bearbeitet wird.
+            </summary>
+            <param name="prompt">Der Eingabeaufforderungstext.</param>
+            <param name="previousValue">Der zuvor für diese Eingabeaufforderung eingegebene Wert.</param>
+            <returns>Der vom Nutzer eingegebe Wert.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetDecimal(System.String,System.Nullable{System.Decimal})">
+            <summary>
+            Fordert den Nutzer auf, eine (ggf. Dezimal-)Zahl im decimal-Bereich einzugeben, und gibt diese zurück.
+            Ggf. wird der vorher eingegebene Wert als Standardwert gesetzt, insofern vom User ein Wert bearbeitet wird.
+            </summary>
+            <param name="prompt">Der Eingabeaufforderungstext.</param>
+            <param name="previousValue">Der zuvor für diese Eingabeaufforderung eingegebene Wert.</param>
+            <returns>Der vom Nutzer eingegebe Wert.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetUlong(System.String,System.Nullable{System.UInt64})">
+            <summary>
+            Fordert den Nutzer auf, eine Zahl im ulong-Bereich einzugeben, und gibt diese zurück.
+            Ggf. wird der vorher eingegebene Wert als Standardwert gesetzt, insofern vom User ein Wert bearbeitet wird.
+            </summary>
+            <param name="prompt">Der Eingabeaufforderungstext.</param>
+            <param name="previousValue">Der zuvor für diese Eingabeaufforderung eingegebene Wert.</param>
+            <returns>Der vom Nutzer eingegebe Wert.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetDate(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Fordert den Nutzer auf, ein Datum im Format d.M.yyyy einzugeben, und gibt dieses zurück.
+            Ggf. wird der vorher eingegebene Wert als Standardwert gesetzt, insofern vom User ein Wert bearbeitet wird.
+            </summary>
+            <param name="prompt">Der Eingabeaufforderungstext.</param>
+            <param name="previousValue">Der zuvor für diese Eingabeaufforderung eingegebene Wert.</param>
+            <returns>Der vom Nutzer eingegebe Wert.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.GetDateInValidUntilFormat(System.Nullable{System.DateTime})">
+            <summary>
+            Fordert den Nutzer auf, ein Datum im Format MM/YY (Kreditkartengültigkeit) einzugeben, und gibt dieses zurück.
+            Ggf. wird der vorher eingegebene Wert als Standardwert gesetzt, insofern vom User ein Wert bearbeitet wird.
+            </summary>
+            <param name="previousValue">Der zuvor für diese Eingabeaufforderung eingegebene Wert.</param>
+            <returns>Der vom Nutzer eingegebe Wert.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.ShowPleaseSelect(System.String,System.Boolean)">
+            <summary>
+            Zeigt einen Text mit der Bitte um Nutzerauswahl.
+            </summary>
+            <param name="whatToSelect">Was soll ausgewählt werden.</param>
+            <param name="errorBefore">Wurde zuvor eine ungültige Wahl getroffen.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.FormatPrice(System.Decimal)">
+            <summary>
+            Formatiert decimal in einen string mit deutschem Währungszeichen und Format zur Ausgabe in der Konsole.
+            </summary>
+            <param name="price">Preis als decimal.</param>
+            <returns>Formatierter Preis.</returns>
+        </member>
+        <member name="M:FPKHotelreservierung.UserInput.ReadLine(System.String)">
+            <summary>
+            Methode zum Einlesen von Benutzereingaben, erweitert für die Bearbeitung von Werten (Setzen von bearbeitbaren Standardwerten),
+            die z.B. beim Editieren eines Gasts/Raums/... notwendig ist.
+            </summary>
+            <param name="defaultValue">Der Standardwert, der angezeigt werden und vom Nutzer bearbeitbar sein soll.</param>
+            <returns>Den vom Nutzer eingegeben Wert.</returns>
+        </member>
+        <member name="T:FPKHotelreservierung.XMLSerializer`1">
+            <summary>
+            Klasse mit Methoden zum Speichern und Lesen von Daten via XML Serialisierung.
+            </summary>
+            <typeparam name="T">Der zu speichernde Typ.</typeparam>
+        </member>
+        <member name="M:FPKHotelreservierung.XMLSerializer`1.SerializeList(System.Collections.Generic.List{`0},System.String)">
+            <summary>
+            Liste per Serialisierung mit XML in eine XML-Datei speichern.
+            </summary>
+            <param name="list">Zu speichernde Liste.</param>
+            <param name="fileNameWithFileType">Dateiname mit Dateiendung.</param>
+        </member>
+        <member name="M:FPKHotelreservierung.XMLSerializer`1.DeserializeList(System.String)">
+            <summary>
+            Liste per Deserialisierung mit XML aus einer XML-Datei erstellen.
+            </summary>
+            <param name="fileNameWithFileType">Dateiname mit Dateiendung.</param>
+            <returns>Aus XML-Datei erstellte Liste.</returns>
+        </member>
+    </members>
+</doc>
